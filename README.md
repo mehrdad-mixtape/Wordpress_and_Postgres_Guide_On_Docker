@@ -11,6 +11,8 @@ How to connect **PostgresSql** to **Wordpress** insted of MySql on `Docker-conta
 
 ### Notice: All steps are implemented with examples and you can change anything you want depending on your needs! (*options*, *exposed ports*, *ip address* and etc...)
 
+### Warning!: Don't skip any step!
+
 1. **Pull images**:
     - WordPress:
         ```bash
@@ -28,6 +30,7 @@ How to connect **PostgresSql** to **Wordpress** insted of MySql on `Docker-conta
     ```
     - wordpress container name: **webhost**
     - postgres container name: **wedatabase**
+
 
 ![image](https://github.com/mehrdad-mixtape/Wordpress_and_Postgres_Guide/blob/master/index1.png)
 
@@ -49,12 +52,14 @@ How to connect **PostgresSql** to **Wordpress** insted of MySql on `Docker-conta
         \q
         ```
         - exit shell
+
 ![image](https://github.com/mehrdad-mixtape/Wordpress_and_Postgres_Guide/blob/master/index2.png)
 
 4. **Clone the plugin pg4wp**
     ```bash
     git clone https://github.com/kevinoid/postgresql-for-wordpress.git
     ```
+
 ![image](https://github.com/mehrdad-mixtape/Wordpress_and_Postgres_Guide/blob/master/index3.png)
 
 5. **Copy plugin to webhost and get a shell**
@@ -62,12 +67,14 @@ How to connect **PostgresSql** to **Wordpress** insted of MySql on `Docker-conta
     sudo docker container cp postgresql-for-wordpress/ webhost:/
     sudo docker container exec -it webhost bash
     ```
+
 ![image](https://github.com/mehrdad-mixtape/Wordpress_and_Postgres_Guide/blob/master/index4.png)
 
 6. **Copy the pg4wp to var/www/html/wp-content/plugins**
     ```bash
     cp -rf /postgresql-for-wordpress/pg4wp/ /var/www/html/wp-content/plugins/
     ```
+
 ![image](https://github.com/mehrdad-mixtape/Wordpress_and_Postgres_Guide/blob/master/index5.png)
 
 7. **Copy the pg4wp/db.php to /var/www/html/wp-content/**
@@ -87,12 +94,14 @@ How to connect **PostgresSql** to **Wordpress** insted of MySql on `Docker-conta
     ```bash
     apt update && apt install vim -y
     ```
+
 ![image](https://github.com/mehrdad-mixtape/Wordpress_and_Postgres_Guide/blob/master/index7.png)
 
 9. **Get Copy wp-config-sample.php and rename it to wp-config.php**
     ```bash
     cp /var/www/html/wp-content/wp-config-sample.php /var/www/html/wp-content/wp-config.php
     ```
+
 ![image](https://github.com/mehrdad-mixtape/Wordpress_and_Postgres_Guide/blob/master/index8.png)
 
 10. **Edit wp-config.php**
@@ -114,6 +123,7 @@ How to connect **PostgresSql** to **Wordpress** insted of MySql on `Docker-conta
         sudo docker container inspect --format '{{ .NetworkSettings.IPAddress }}' wedatabase
         172.17.0.3
         ```
+
 ![image](https://github.com/mehrdad-mixtape/Wordpress_and_Postgres_Guide/blob/master/index9.png)
 
 11. **Install php-pgsql Plugin**
@@ -124,16 +134,18 @@ How to connect **PostgresSql** to **Wordpress** insted of MySql on `Docker-conta
     && docker-php-ext-install pdo pdo_pgsql pgsql
     ```
     - exit shell
+
 ![image](https://github.com/mehrdad-mixtape/Wordpress_and_Postgres_Guide/blob/master/index10.png)
 
 12. **Restart the webhost container**
     ```bash
     sudo docker container restart webhost
     ```
+
 ![image](https://github.com/mehrdad-mixtape/Wordpress_and_Postgres_Guide/blob/master/index11.png)
 
 ## Congratulations!
-    - Find you local ip address:
+    - Find your local ip address:
     - My local IPAddress: 192.168.1.200
     - Open you web-browser and go to LOCAL_IP_ADDRESS:8085
 
