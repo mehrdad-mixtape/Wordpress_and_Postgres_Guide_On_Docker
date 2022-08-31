@@ -1,1 +1,1 @@
-# Wordpress_and_Postgres_New_way
+# Wordpress & PostgresSql Guide
