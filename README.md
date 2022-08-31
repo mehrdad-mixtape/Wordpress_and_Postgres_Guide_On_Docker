@@ -16,11 +16,11 @@ How to connect **PostgresSql** to **Wordpress** insted of MySql on `Docker-conta
 1. **Pull images**:
     - WordPress:
         ```bash
-        sudo pull wordpress
+        sudo docker pull wordpress
         ```
     - Postgres:
         ```bash
-        sudo pull postgres
+        sudo docker pull postgres
         ```
 
 2. **Make Your Containers**:
