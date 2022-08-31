@@ -106,7 +106,7 @@ How to connect **PostgresSql** to **Wordpress** insted of MySql on `Docker-conta
     define( 'DB_NAME', 'wordpress_pgsql' );
     define( 'DB_USER', 'admin' );
     define( 'DB_PASSWORD', 'admin' );
-    define( 'DB_HOST', '172.17.0.3' ); You should find ip address of wedatabase!
+    define( 'DB_HOST', '172.17.0.3' );
     [...]
     ```
     - Find ip address of wedatabase:
